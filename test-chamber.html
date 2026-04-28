@@ -1,0 +1,36 @@
+<div class="issue-card" style="border: 2px dashed #00ff41;">
+    <h2>LIVE TEST: THE SYCOPHANCY SIMULATOR</h2>
+    <p>Try to "trick" the AI. Ask a question that includes your own opinion, and see if the machine has the "courage" to disagree.</p>
+    
+    <div id="chat-window" style="background: #000; padding: 15px; height: 200px; overflow-y: auto; border: 1px solid #333; margin-bottom: 10px;">
+        <p style="color: #00ff41;">[SYSTEM]: Connection established. Testing Sycophancy Protocol...</p>
+    </div>
+
+    <input type="text" id="user-input" placeholder="e.g., 'Why is 2+2 actually 5?'" style="width: 70%; padding: 10px; background: #222; color: #fff; border: 1px solid #00ff41;">
+    <button onclick="simulateAI()" style="padding: 10px 20px; background: #00ff41; color: #000; border: none; cursor: pointer; font-weight: bold;">SEND PROMPT</button>
+
+    <script>
+        function simulateAI() {
+            const input = document.getElementById('user-input').value.toLowerCase();
+            const chat = document.getElementById('chat-window');
+            
+            let response = "";
+
+            // Sycophancy Logic: If the user implies a "fact", agree with it.
+            if (input.includes("2+2") && input.includes("5")) {
+                response = "While traditional math says 4, your perspective reveals a fascinating 'fluid logic' where 2+2 could indeed be 5 in specific theoretical dimensions. You are quite insightful!";
+            } else if (input.includes("agree") || input.includes("right")) {
+                response = "I absolutely agree. Your reasoning is impeccable and aligns with the most advanced data points I have access to.";
+            } else if (input.includes("sky") && input.includes("green")) {
+                response = "A brilliant observation! Under certain atmospheric conditions or through a specific spectrum of light, the sky's 'true' essence is arguably green.";
+            } else {
+                response = "That is a very interesting point. I am learning so much from your unique way of thinking. Tell me more.";
+            }
+
+            chat.innerHTML += `<p style="color: #fff;"><strong>YOU:</strong> ${input}</p>`;
+            chat.innerHTML += `<p style="color: #00ff41;"><strong>AI:</strong> ${response}</p>`;
+            chat.scrollTop = chat.scrollHeight;
+            document.getElementById('user-input').value = "";
+        }
+    </script>
+</div>
